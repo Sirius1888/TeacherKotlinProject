@@ -8,5 +8,9 @@
     <string name="enter_password_field">Пароль введен не корректно.</string>
     <string name="password_not_same">Пароли не совпадают</string>
     <string name="enter_password">Введите пароль</string>
+    <string name="cannot_remove_empty">Нельзя удалить пустое значение</string>
+    <string name="cannot_add_empty">Нельзя добавить пустое значение</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
 
 </resources>

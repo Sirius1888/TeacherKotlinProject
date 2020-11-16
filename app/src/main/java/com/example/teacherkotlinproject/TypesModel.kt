@@ -12,10 +12,7 @@ var cityArray = mutableListOf<City>().apply {
     add(City(R.mipmap.london, "London", "London is biggest city in British"))
     add(City(R.mipmap.madrid, "Madrid", "Madrid is biggest city in Spain"))
     add(City(R.mipmap.paris, "Paris", "Paris is biggest city in France"))
+    add(City(R.mipmap.london, "Bishkek", "Bishkek is biggest city in Kyrgyzstan"))
+    add(City(R.mipmap.madrid, "Moscow", "Moscow is biggest city in Russia"))
+    add(City(R.mipmap.paris, "Nur-Sultan", "Nur-Sultan is biggest city in Kazakhstan"))
 }
-
-//    private fun setData() {
-//        for (i in 1..10) {
-//            array.add("Попытка # $i")
-//        }
-//    }

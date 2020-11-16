@@ -1,17 +1,18 @@
-package com.example.teacherkotlinproject.ui
+package com.example.teacherkotlinproject.ui.city
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.*
+import com.example.teacherkotlinproject.ui.detail_city.CityActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    MainAdapter.Listener {
 
-    //Добавить ещё 3 города (Картинка, Название, описание)
-    //Добавить: отступ слева, стиль для Названия города, стиль для Описание города.
-    //Прочитать про RecyclerView
-    //Прочитать про data classes
+    //Сделать закругление для ImageView в CityActivity
+
 
     private lateinit var adapter: MainAdapter
 
@@ -22,10 +23,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        adapter = MainAdapter()
+        adapter = MainAdapter(this)
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapter
         adapter.updateItems(cityArray)
     }
 
+    override fun onItemClick(item: City) {
+//        showToast(this, item.description)
+        val intent = Intent(this, CityActivity::class.java)
+        intent.putExtra("city", item)
+        startActivity(intent)
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui
+package com.example.teacherkotlinproject.ui.city
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.teacherkotlinproject.City
 import com.example.teacherkotlinproject.R
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private var listener: Listener): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     var array = mutableListOf<City>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_main, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
@@ -27,6 +29,9 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         holder.image.setImageResource(item.image)
         holder.name.text = item.name
         holder.description.text = item.description
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
+        }
     }
 
     fun updateItems(items: MutableList<City>) {
@@ -43,5 +48,9 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         var name: TextView = itemView.findViewById(R.id.name)
         var description: TextView = itemView.findViewById(R.id.description)
         var image: ImageView = itemView.findViewById(R.id.image)
+    }
+
+    interface Listener {
+        fun onItemClick(item: City)
     }
 }

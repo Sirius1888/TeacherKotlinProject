@@ -7,4 +7,8 @@
     <color name="black_bgr">#000</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#474747</color>
+
+
+    <color name="colorHeaderText">#191919</color>
+    <color name="colorSubheaderText">#6C6C6C</color>
 </resources>

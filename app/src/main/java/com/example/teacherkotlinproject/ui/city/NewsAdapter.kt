@@ -6,51 +6,48 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.teacherkotlinproject.City
+import com.example.teacherkotlinproject.News
 import com.example.teacherkotlinproject.R
 
-class MainAdapter(private var listener: Listener): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-    var array = mutableListOf<City>()
+    var newsArray = mutableListOf<News>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_main, parent, false)
-        return ViewHolder(
-            view
-        )
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return array.size
+        return newsArray.size
+    }
+
+    fun updateItems(items: MutableList<News>) {
+        newsArray = items
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = array[position]
-        holder.image.setImageResource(item.image)
-        holder.name.text = item.name
-        holder.description.text = item.description
+        val item = newsArray[position]
+        holder.bind(item)
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
         }
     }
 
-    fun updateItems(items: MutableList<City>) {
-        array = items
-        notifyDataSetChanged()
-    }
-
-    fun addItem(value: City) {
-        array.add(value)
-        notifyItemInserted(array.lastIndex)
-    }
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name: TextView = itemView.findViewById(R.id.name)
-        var description: TextView = itemView.findViewById(R.id.description)
         var image: ImageView = itemView.findViewById(R.id.image)
+        var title: TextView = itemView.findViewById(R.id.title)
+        var description: TextView = itemView.findViewById(R.id.description)
+
+        fun bind(item: News) {
+            image.setImageResource(item.image)
+            title.text = item.title
+            description.text = item.description
+        }
     }
 
     interface Listener {
-        fun onItemClick(item: City)
+        fun onItemClick(item: News)
     }
 }

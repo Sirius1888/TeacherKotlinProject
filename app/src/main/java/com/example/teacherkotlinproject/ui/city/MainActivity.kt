@@ -1,61 +1,42 @@
 package com.example.teacherkotlinproject.ui.city
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.teacherkotlinproject.City
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.showToast
+import com.example.teacherkotlinproject.cityArray
+import com.example.teacherkotlinproject.ui.detail_city.CityActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    MainAdapter.Listener {
 
-    private val array = mutableListOf<String>()
+    //+ Сделать закругление для ImageView в CityActivity
+    //+ Добавить createDate: String, population:Int и ещё 2 переменных которые описывают города на свой выбор
+    //+ К каждому добавленному полю добавить по своей view
+
+    private lateinit var adapter: MainAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        addToArrayAction()
-        removeFromArrayAction()
+
+        setupAdapter()
     }
 
-    private fun addToArrayAction() {
-        add.setOnClickListener {
-            val value = text_add.text.toString()
-            if (value.isEmpty()) {
-                showToast(this, resources.getString(R.string.cannot_add_empty))
-                return@setOnClickListener
-            }
-            array.add(value)
-            text_add.text.clear()
-            showArrayItems()
-        }
+    private fun setupAdapter() {
+        adapter = MainAdapter(this)
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.adapter = adapter
+        adapter.updateItems(cityArray)
     }
 
-    private fun removeFromArrayAction() {
-        remove.setOnClickListener {
-            val value = text_remove.text.toString()
-            if (value.isEmpty()) {
-                showToast(this, resources.getString(R.string.cannot_remove_empty))
-                return@setOnClickListener
-            }
-            text_remove.text.clear()
-            removeFromArray(value)
-        }
+    override fun onItemClick(item: City) {
+        val intent = Intent(this, CityActivity::class.java)
+        intent.putExtra("city", item)
+        startActivity(intent)
     }
-
-    private fun removeFromArray(value: String) {
-        var deletedIndex: Int? = null
-        for ((index, item) in array.withIndex()) {
-            if (item == value) deletedIndex = index
-        }
-        deletedIndex?.let { array.removeAt(it) }
-        showArrayItems()
-    }
-
-    private fun showArrayItems() {
-        var text = ""
-        for (item in array) {
-            text += "$item \n"
-        }
-        showToast(this, text)
-    }
-
 }
+

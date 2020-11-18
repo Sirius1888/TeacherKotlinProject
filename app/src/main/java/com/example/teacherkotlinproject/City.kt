@@ -6,5 +6,9 @@ import java.io.Serializable
 data class City(
     var image: Int,
     var name: String,
-    var description: String
+    var description: String,
+    var createDate: String,
+    var population: String,
+    var country: String,
+    var square: String
 ) : Serializable

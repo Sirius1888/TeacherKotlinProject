@@ -6,43 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ui.city.MainActivity">
 
-    <EditText
-        android:id="@+id/text_add"
+    <LinearLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Введите текст для добавления"
-        android:layout_margin="@dimen/margin_8_dp"/>
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/add"
+        <EditText
+            android:id="@+id/input_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add"
-        app:layout_constraintTop_toBottomOf="@+id/text_add"
-        android:layout_margin="@dimen/margin_8_dp"/>
-
-    <EditText
-        android:id="@+id/text_remove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/add"
-        app:layout_constraintStart_toStartOf="parent"
-        android:hint="Введите текст для удаления"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/margin_8_dp"/>
-
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"
-        app:layout_constraintTop_toBottomOf="@+id/text_remove"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/margin_8_dp"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,5 +24,8 @@ class CityActivity : AppCompatActivity() {
         image.setImageResource(data.image)
         header.text = data.name
         sub_header.text = data.description
+        create_date.text = data.createDate
+        population.text = data.population
+        country.text = data.country
     }
 }

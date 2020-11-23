@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_24_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        style="@style/AlertHeaderText"
+        tools:text="Заголовок"/>
+
+    <EditText
+        android:id="@+id/title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:background="@null"
+        android:hint="Введите заголовок"/>
+
+    <EditText
+        android:id="@+id/description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/title_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:background="@null"
+        android:hint="Введите описание"/>
+
+    <Button
+        android:id="@+id/negative"
+        style="@style/negativeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:layout_marginBottom="@dimen/margin_16_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/positive"
+        app:layout_constraintTop_toTopOf="@+id/positive"
+        tools:text="Cancel" />
+
+    <Button
+        android:id="@+id/positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/description_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_24_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:layout_marginBottom="@dimen/margin_16_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/positiveButton"
+        tools:text="ОК"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

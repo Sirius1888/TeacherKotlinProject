@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.News
 import com.example.teacherkotlinproject.R
 
@@ -39,6 +40,11 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         notifyItemRangeChanged(position, itemCount)
     }
 
+    fun addItem(item: News) {
+        newsArray.add(item)
+        notifyItemInserted(newsArray.lastIndex)
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = newsArray[position]
         holder.bind(item)
@@ -57,7 +63,11 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         var description: TextView = itemView.findViewById(R.id.description)
 
         fun bind(item: News) {
-            image.setImageResource(item.image)
+            Glide
+                .with(image.context)
+                .load(item.image)
+                .into(image)
+
             title.text = item.title
             description.text = item.description
         }

@@ -25,7 +25,7 @@
     </style>
 
     <style name="AlertHeaderText">
-        <item name="android:textSize">@dimen/text_size_16_sp</item>
+        <item name="android:textSize">@dimen/text_size_18_sp</item>
         <item name="android:textColor">@color/colorHeaderText</item>
         <item name="android:lines">2</item>
         <item name="android:ellipsize">end</item>

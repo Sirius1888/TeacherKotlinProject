@@ -5,13 +5,21 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import kotlin.reflect.KFunction0
 
 fun showToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }
 
-fun showSnackbar(view: View, message: String) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+fun showSnackbar(
+    view: View,
+    message: String,
+    actionTitle: String,
+    action: () -> Unit
+) {
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction(actionTitle){
+        action()
+    }.show()
 }
 
 fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {

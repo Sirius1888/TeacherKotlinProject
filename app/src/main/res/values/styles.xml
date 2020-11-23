@@ -18,10 +18,29 @@
     </style>
 
     <style name="SubHeaderText">
-        <item name="android:textSize">@dimen/text_size_20_sp</item>
+        <item name="android:textSize">@dimen/text_size_12_sp</item>
         <item name="android:textColor">@color/colorSubheaderText</item>
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:lines">2</item>
+    </style>
+
+    <style name="AlertHeaderText">
+        <item name="android:textSize">@dimen/text_size_16_sp</item>
+        <item name="android:textColor">@color/colorHeaderText</item>
+        <item name="android:lines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="positiveButton">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="negativeButton">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="button">
@@ -31,6 +50,10 @@
         <item name="android:background">@color/black_bgr</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="NewsDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_alert_dialog</item>
     </style>
 
 </resources>

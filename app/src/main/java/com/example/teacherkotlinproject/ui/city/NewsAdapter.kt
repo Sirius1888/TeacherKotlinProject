@@ -1,5 +1,6 @@
 package com.example.teacherkotlinproject.ui.city
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +28,26 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
         notifyDataSetChanged()
     }
 
+    fun deleteItem(position: Int) {
+        newsArray.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, itemCount)
+    }
+
+    fun restoreItem(item: News, position: Int) {
+        newsArray.add(position, item)
+        notifyItemRangeChanged(position, itemCount)
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = newsArray[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
+        }
+        holder.itemView.setOnLongClickListener {
+            listener.onLongItemClick(item, position)
+            true
         }
     }
 
@@ -49,5 +65,6 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
 
     interface Listener {
         fun onItemClick(item: News)
+        fun onLongItemClick(item: News, position: Int)
     }
 }

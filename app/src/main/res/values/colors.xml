@@ -11,4 +11,5 @@
 
     <color name="colorHeaderText">#191919</color>
     <color name="colorSubheaderText">#6C6C6C</color>
+    <color name="swipe_view_bgr">#D32F2F</color>
 </resources>

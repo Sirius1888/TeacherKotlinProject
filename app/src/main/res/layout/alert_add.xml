@@ -18,8 +18,9 @@
         style="@style/AlertHeaderText"
         tools:text="Заголовок"/>
 
+
     <EditText
-        android:id="@+id/title_edit_text"
+        android:id="@+id/image_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/header"
@@ -27,18 +28,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите заголовок"/>
+        android:hint="Введите URL картинки"/>
 
     <EditText
-        android:id="@+id/description_edit_text"
+        android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/title_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/image_edit_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите описание"/>
+        android:hint="Введите имя"/>
+
+    <EditText
+        android:id="@+id/lastname_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/name_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:background="@null"
+        android:hint="Введите фамилию"/>
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lastname_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:background="@null"
+        android:hint="Введите email"/>
 
     <Button
         android:id="@+id/negative"
@@ -56,7 +79,7 @@
         android:id="@+id/positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/description_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/margin_24_dp"
         android:layout_marginEnd="@dimen/margin_16_dp"

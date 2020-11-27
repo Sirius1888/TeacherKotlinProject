@@ -1,11 +1,10 @@
-package com.example.teacherkotlinproject
+package com.example.teacherkotlinproject.helper
 
 import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
-import kotlin.reflect.KFunction0
 
 fun showToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_LONG).show()
@@ -17,9 +16,16 @@ fun showSnackbar(
     actionTitle: String,
     action: () -> Unit
 ) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction(actionTitle){
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction(actionTitle) {
         action()
     }.show()
+}
+
+fun showSnackbar(
+    view: View,
+    message: String
+) {
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
 
 fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
@@ -37,7 +43,10 @@ fun checkFieldIsSame(first: String, second: String, context: Context, message: S
     }
 
     if (first.length <= 6) {
-        showToast(context, "Поле должно быть больше 6 символов")
+        showToast(
+            context,
+            "Поле должно быть больше 6 символов"
+        )
         return true
     }
     return false

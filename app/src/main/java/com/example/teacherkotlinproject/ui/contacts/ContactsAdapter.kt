@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.models.Contact
+import com.example.teacherkotlinproject.models.contactArray
 
 
 class ContactsAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<ContactsAdapter.ContactViewHolder>() {
@@ -38,6 +39,7 @@ class ContactsAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<
 
     fun addItem(item: Contact) {
         array.add(item)
+        contactArray.add(item)
         notifyItemInserted(array.lastIndex)
     }
 

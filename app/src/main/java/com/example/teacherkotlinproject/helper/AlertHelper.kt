@@ -33,27 +33,3 @@ fun showSingleActionDialog(action: () -> Unit, activity: AppCompatActivity, head
     }
     dialog.show()
 }
-
-class ShowAddEditingDialog(context: Context, var headerTitle: String, var listener: OnAddEditListener, var type: Int): Dialog(context, R.style.NewsDialogStyle) {
-
-    //type 0 - add, 1 - edit
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.alert_add)
-        header.text = headerTitle
-        negative.setOnClickListener { dismiss() }
-        positive.setOnClickListener { listener.addEditingDialog(type, Contact(
-            image_edit_text.text.toString(),
-            name_edit_text.text.toString(),
-            lastname_edit_text.text.toString(),
-            email_edit_text.text.toString())
-        )}
-    }
-
-}
-
-interface OnAddEditListener {
-    fun addEditingDialog(type: Int, contact: Contact)
-}
-
-

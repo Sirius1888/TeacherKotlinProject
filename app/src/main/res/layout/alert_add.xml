@@ -1,67 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_alert_dialog">
 
     <TextView
         android:id="@+id/header"
+        style="@style/AlertHeaderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/margin_24_dp"
         android:layout_marginStart="@dimen/margin_16_dp"
+        android:layout_marginTop="@dimen/margin_24_dp"
         android:layout_marginEnd="@dimen/margin_16_dp"
-        style="@style/AlertHeaderText"
-        tools:text="Заголовок"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Заголовок" />
 
 
     <EditText
         android:id="@+id/image_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите URL картинки"/>
+        android:hint="Введите URL картинки"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <EditText
         android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/image_edit_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите имя"/>
+        android:hint="Введите имя"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_edit_text" />
 
     <EditText
         android:id="@+id/lastname_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/name_edit_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите фамилию"/>
+        android:hint="Введите фамилию"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_edit_text" />
 
     <EditText
         android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lastname_edit_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         android:background="@null"
-        android:hint="Введите email"/>
+        android:hint="Введите email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastname_edit_text" />
 
     <Button
         android:id="@+id/negative"
@@ -73,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/positive"
         app:layout_constraintTop_toTopOf="@+id/positive"
-        tools:text="Cancel" />
+        android:text="Cancel" />
 
     <Button
         android:id="@+id/positive"
@@ -86,6 +87,6 @@
         android:layout_marginBottom="@dimen/margin_16_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/positiveButton"
-        tools:text="ОК"/>
+        android:text="ОК"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -35,12 +35,12 @@
 
     <style name="positiveButton">
         <item name="android:background">@null</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/positive</item>
     </style>
 
     <style name="negativeButton">
         <item name="android:background">@null</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/negative</item>
     </style>
 
     <style name="button">

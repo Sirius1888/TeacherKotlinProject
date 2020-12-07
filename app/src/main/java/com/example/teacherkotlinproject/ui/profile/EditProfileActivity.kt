@@ -1,12 +1,14 @@
-package com.example.teacherkotlinproject.ui.detail_contact
+package com.example.teacherkotlinproject.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.teacherkotlinproject.R
+import kotlinx.android.synthetic.main.fragment_profile.*
 
-class DetailContactActivity : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_contact)
+        setContentView(R.layout.activity_edit_profile)
+
     }
 }

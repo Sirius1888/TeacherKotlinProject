@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.profile.EditProfileActivity"></activity>
+        <activity android:name=".ui.cat_detail.CatDetailActivity"></activity>
+        <activity android:name=".ui.profile.EditProfileActivity" />
         <activity android:name=".ui.detail_contact.DetailContactActivity" />
-        <activity android:name=".ui.contacts.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

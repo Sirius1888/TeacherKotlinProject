@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.EditText
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.models.Contact
 import kotlinx.android.synthetic.main.alert_add.*
 
 class ShowAddEditingDialog(context: Context, var headerTitle: String,
@@ -38,12 +37,12 @@ class ShowAddEditingDialog(context: Context, var headerTitle: String,
 
             if (errorCount > 0) return@setOnClickListener
 
-            val contact = Contact(
-                image_edit_text.text.toString(),
-                name_edit_text.text.toString(),
-                lastname_edit_text.text.toString(),
-                email_edit_text.text.toString())
-            listener.addEditingDialog(type, contact)
+//            val contact = Contact(
+//                image_edit_text.text.toString(),
+//                name_edit_text.text.toString(),
+//                lastname_edit_text.text.toString(),
+//                email_edit_text.text.toString())
+//            listener.addEditingDialog(type, contact)
             dismiss()
         }
     }
@@ -58,5 +57,5 @@ fun checkIsEmptyField(editText: EditText): Boolean {
 }
 
 interface OnAddEditListener {
-    fun addEditingDialog(type: Int, contact: Contact)
+//    fun addEditingDialog(type: Int, contact: Contact)
 }

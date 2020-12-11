@@ -4,30 +4,30 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-const val LOGIN = "login"
-const val PASSWORD = "password"
+const val NAME = "name"
+const val SURNAME = "surname"
 
 class SharedPreferences(context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("authorization_application", Context.MODE_PRIVATE)
 
-    var login: String
+    var name: String
     get() {
-        return sharedPreferences.getStringOrDefault(LOGIN)
+        return sharedPreferences.getStringOrDefault(NAME, "Sergey")
     }
     set(value) {
         sharedPreferences.edit {
-            putString(LOGIN, value)
+            putString(NAME, value)
         }
     }
 
-    var password: String
+    var surname: String
         get() {
-            return sharedPreferences.getStringOrDefault(PASSWORD)
+            return sharedPreferences.getStringOrDefault(SURNAME, "Karukes")
         }
         set(value) {
             sharedPreferences.edit {
-                putString(PASSWORD, value)
+                putString(SURNAME, value)
             }
         }
 

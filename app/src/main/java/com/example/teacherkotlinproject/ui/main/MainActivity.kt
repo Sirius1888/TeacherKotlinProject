@@ -4,22 +4,26 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.teacherkotlinproject.R
+import com.example.teacherkotlinproject.helper.SharedPreferences
 import com.example.teacherkotlinproject.ui.cat.CatFragment
 import com.example.teacherkotlinproject.ui.dog.DogFragment
+import com.example.teacherkotlinproject.ui.pet.PetFragment
+import com.example.teacherkotlinproject.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     //Прочитать про TabLayout
     //Прочитать про ViewPager
-    //Создать DogAdapter
-    //Создать в файле Cat переменную dogArray и добавить в неё значения
-    //Создат DogDetailActivity и для него layout
-    //Отрисовать в DogFragment dogArray и сделать переход в DogDetailActivity
-    //Отрисовать все значения в DogDetailActivity
 
-    private var catFragment = CatFragment()
-    private var dogFragment = DogFragment()
+    //Добавить отсутсвующие поля в SharedPreferences
+    //Отобразить ваши значения из SharedPreferences в ProfileFragment
+    //Если есть номер телефона в поле phoneNumber тогда сделать переход на звонилку устройства иначе отобразить сообщение "Номер отсутствует"
+    //Добавить тулбар с кнопкой и при нажатии на кнопку сделать активными все EditText (ProfileFragment)
+    //везде где вызывается метод OnStart заменить на onViewCreated
+
+//    private var petsFragment = PetFragment()
+//    private var profileFragment = ProfileFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.cat -> navigateFragment(catFragment)
-                R.id.dog -> navigateFragment(dogFragment)
+                R.id.pets -> navigateFragment(PetFragment())
+                R.id.profile -> navigateFragment(ProfileFragment())
                 else -> false
             }
         }
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addStartFragment() {
-        supportFragmentManager.beginTransaction().add(R.id.container_fragment, catFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container_fragment, ProfileFragment()).commit()
     }
 
 }

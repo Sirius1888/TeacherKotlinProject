@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/cat"
+    <item android:id="@+id/pets"
         android:icon="@drawable/ic_cat"
-        android:iconTint="@color/colorAccent"
-        android:title="@string/contact"/>
+        android:title="@string/pets"/>
 
-    <item android:id="@+id/dog"
+    <item android:id="@+id/profile"
         android:icon="@drawable/ic_dog"
-        android:iconTint="@color/colorAccent"
         android:title="@string/profile"/>
 </menu>

@@ -13,7 +13,8 @@
         app:tabMode="fixed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabBackground="@color/colorAccent"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

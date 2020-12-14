@@ -20,5 +20,6 @@
     <string name="edit">Редактировать</string>
     <string name="home_animals">Домашние животные</string>
     <string name="pets">Pets</string>
+    <string name="save">Сохранить</string>
 
 </resources>

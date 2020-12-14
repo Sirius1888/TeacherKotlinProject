@@ -13,17 +13,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //Прочитать про TabLayout
-    //Прочитать про ViewPager
 
-    //Добавить отсутсвующие поля в SharedPreferences
-    //Отобразить ваши значения из SharedPreferences в ProfileFragment
+    /*!!Подготовиться к ежемесячному экзамену по темам:
+        Recycler, Snackbar,
+        Dialogs, toolbar, fragment,
+        viewpager, tabLayout,
+        bottomNavigationView
+     */
     //Если есть номер телефона в поле phoneNumber тогда сделать переход на звонилку устройства иначе отобразить сообщение "Номер отсутствует"
-    //Добавить тулбар с кнопкой и при нажатии на кнопку сделать активными все EditText (ProfileFragment)
-    //везде где вызывается метод OnStart заменить на onViewCreated
+    //Упростить 2 метода в ProfileFragment - setEditState(), updateEditingViews()
+    //(Доп) отказаться от переменной isEdit в ProfileFragment
 
-//    private var petsFragment = PetFragment()
-//    private var profileFragment = ProfileFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addStartFragment() {
-        supportFragmentManager.beginTransaction().add(R.id.container_fragment, ProfileFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container_fragment, PetFragment()).commit()
     }
 
 }

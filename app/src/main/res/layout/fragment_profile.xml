@@ -71,14 +71,26 @@
 
     <EditText
         android:id="@+id/phone_number"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/surname"
+        app:layout_constraintEnd_toStartOf="@+id/call"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/margin_16_dp"
         tools:text="Phone number"
         android:background="@null"
         android:enabled="false"/>
+
+    <Button
+        android:id="@+id/call"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/phone_number"
+        app:layout_constraintBottom_toBottomOf="@+id/phone_number"
+        app:layout_constraintStart_toEndOf="@+id/phone_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:text="call"
+        android:background="@null"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

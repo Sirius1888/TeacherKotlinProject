@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui.pet
+package com.example.teacherkotlinproject.ui.pet.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

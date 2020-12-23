@@ -12,7 +12,7 @@ import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.models.Pet
 
 
-class DogAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<DogAdapter.CatViewHolder>() {
+class DogAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<CatViewHolder>() {
 
     private var array = mutableListOf<Pet>()
 
@@ -43,28 +43,28 @@ class DogAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<DogAd
         notifyDataSetChanged()
     }
 
-    class CatViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
-        val image: ImageView = itemView.findViewById(R.id.image)
-        val title: TextView = itemView.findViewById(R.id.title)
-        val subtitle: TextView = itemView.findViewById(R.id.subtitle)
-        val like: ImageButton = itemView.findViewById(R.id.like)
-
-        fun bind(item: Pet) {
-            Glide.with(image.context)
-                .load(item.image)
-                .into(image)
-            title.text = item.name
-            subtitle.text = item.description
-
-            like.setImageResource(getLikeImage(item.isLiked))
-        }
-    }
-
     interface OnItemClick {
         fun onItemClick(item: Pet)
     }
 
+}
+
+class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    val image: ImageView = itemView.findViewById(R.id.image)
+    val title: TextView = itemView.findViewById(R.id.title)
+    val subtitle: TextView = itemView.findViewById(R.id.subtitle)
+    val like: ImageButton = itemView.findViewById(R.id.like)
+
+    fun bind(item: Pet) {
+        Glide.with(image.context)
+            .load(item.image)
+            .into(image)
+        title.text = item.name
+        subtitle.text = item.description
+
+        like.setImageResource(getLikeImage(item.isLiked))
+    }
 }
 
 fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_like

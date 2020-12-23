@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.ui.cat.CatFragment
 import com.example.teacherkotlinproject.ui.dog.DogFragment
+import com.example.teacherkotlinproject.ui.pet.adapter.PetViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_pet.*
 
@@ -28,7 +29,10 @@ class PetFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        viewPagerAdapter = PetViewPagerAdapter(childFragmentManager)
+        viewPagerAdapter =
+            PetViewPagerAdapter(
+                childFragmentManager
+            )
         viewPagerAdapter.addFragment(CatFragment(), "Котики")
         viewPagerAdapter.addFragment(DogFragment(), "Собачки")
         view_pager.adapter = viewPagerAdapter

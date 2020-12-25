@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui.dog_detail
+package com.example.teacherkotlinproject.ui.pets.pet_detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,12 +7,12 @@ import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.models.Pet
 import kotlinx.android.synthetic.main.activity_cat_detail.*
 
-class DogDetailActivity : AppCompatActivity() {
+class PetDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dog_detail)
-        val item = intent.getSerializableExtra("dog") as Pet
+        val item = intent.getSerializableExtra("pet") as Pet
         setupViews(item)
     }
 

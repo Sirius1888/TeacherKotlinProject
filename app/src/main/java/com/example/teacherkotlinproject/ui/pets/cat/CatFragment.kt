@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui.cat
+package com.example.teacherkotlinproject.ui.pets.cat
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.models.Pet
 import com.example.teacherkotlinproject.models.catArray
-import com.example.teacherkotlinproject.ui.cat.adapter.CatAdapter
-import com.example.teacherkotlinproject.ui.cat_detail.CatDetailActivity
+import com.example.teacherkotlinproject.ui.pets.adapter.PetAdapter
+import com.example.teacherkotlinproject.ui.pets.pet_detail.PetDetailActivity
 import kotlinx.android.synthetic.main.fragment_cat.*
 
 
-class CatFragment : Fragment(), CatAdapter.OnItemClick {
+class CatFragment : Fragment(), PetAdapter.OnItemClick {
 
-    lateinit var adapter: CatAdapter
+    lateinit var adapter: PetAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,15 +31,23 @@ class CatFragment : Fragment(), CatAdapter.OnItemClick {
     }
 
     private fun setupAdapter() {
-        adapter = CatAdapter(this)
+        adapter = PetAdapter(this)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateItems()
+    }
+
+    private fun updateItems() {
         adapter.addItems(catArray)
     }
 
     override fun onItemClick(item: Pet) {
-        val intent = Intent(activity, CatDetailActivity::class.java)
-        intent.putExtra("cat", item)
+        val intent = Intent(activity, PetDetailActivity::class.java)
+        intent.putExtra("pet", item)
         startActivity(intent)
     }
 }

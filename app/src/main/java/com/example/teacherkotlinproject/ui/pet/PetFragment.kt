@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.ui.cat.CatFragment
-import com.example.teacherkotlinproject.ui.dog.DogFragment
+import com.example.teacherkotlinproject.ui.pets.cat.CatFragment
+import com.example.teacherkotlinproject.ui.pets.dog.DogFragment
 import com.example.teacherkotlinproject.ui.pet.adapter.PetViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_pet.*

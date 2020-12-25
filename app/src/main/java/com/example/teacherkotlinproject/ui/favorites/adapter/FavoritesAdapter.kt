@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.models.Pet
-import com.example.teacherkotlinproject.ui.cat.adapter.getLikeImage
+import com.example.teacherkotlinproject.ui.pets.adapter.getLikeImage
 
 
 class FavoritesAdapter(private val listener: OnItemClick) : RecyclerView.Adapter<FavoritesViewHolder>() {
@@ -71,5 +71,5 @@ class FavoritesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .load(item.image)
             .into(image)
     }
-
 }
+

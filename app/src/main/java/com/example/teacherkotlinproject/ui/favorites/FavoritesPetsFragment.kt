@@ -6,17 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.helper.showSnackbar
 import com.example.teacherkotlinproject.models.*
-import com.example.teacherkotlinproject.ui.dog.adapter.DogAdapter
 import com.example.teacherkotlinproject.ui.favorites.adapter.FavoritesAdapter
 import kotlinx.android.synthetic.main.fragment_cat.*
 
 class FavoritesPetsFragment : Fragment(), FavoritesAdapter.OnItemClick {
 
-    //activity & fragment = VIEW
     lateinit var adapter: FavoritesAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +27,34 @@ class FavoritesPetsFragment : Fragment(), FavoritesAdapter.OnItemClick {
         setupAdapter()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateItems()
+    }
+
     private fun setupAdapter() {
         adapter = FavoritesAdapter(this)
         recycler_view.layoutManager = LinearLayoutManager(requireContext())
         recycler_view.adapter = adapter
-        adapter.addItems(favoritesArray)
+    }
+
+    private fun updateItems() {
+        adapter.addItems(getFavoriteArray())
     }
 
     override fun onLikeClick(position: Int, item: Pet) {
         adapter.removeItem(position)
+        changeItems(item)
         showSnackbar(recycler_view,
             "Вы удалили из избранного ${item.name}",
-            "Восстановить")  { adapter.restoreItem(position, item)}
+            "Восстановить")  {
+            adapter.restoreItem(position, item)
+            changeItems(item) }
     }
+
+    private fun changeItems(item: Pet) {
+        changeState(item, dogArray)
+        changeState(item, catArray)
+    }
+
 }

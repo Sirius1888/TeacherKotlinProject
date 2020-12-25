@@ -30,7 +30,13 @@ val dogArray = mutableListOf<Pet>().apply {
     add(Pet("https://i.ytimg.com/vi/nLTTa0ToTU8/maxresdefault.jpg", "Ki", "30", false, "Соба́ка — домашнее животное, одно из наиболее популярных животных-компаньонов. Первоначально домашняя собака была выделена в отдельный биологический вид Линнеем в 1758 году, в 1993 году реклассифицирована Смитсоновским институтом и Американской ассоциацией териологов в подвид волка.", "Canadian"))
 }
 
-val favoritesArray = mutableListOf<Pet>().apply {
+fun changeState(item: Pet, array: MutableList<Pet>) {
+    for (i in array) {
+        if (i == item) item.isLiked = !item.isLiked
+    }
+}
+
+fun getFavoriteArray() = mutableListOf<Pet>().apply {
     addAll(catArray.filter { it.isLiked })
     addAll(dogArray.filter { it.isLiked })
 }

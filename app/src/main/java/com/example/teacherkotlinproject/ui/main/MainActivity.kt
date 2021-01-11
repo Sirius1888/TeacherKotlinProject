@@ -2,46 +2,25 @@ package com.example.teacherkotlinproject.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.ui.favorites.FavoritesPetsFragment
-import com.example.teacherkotlinproject.ui.main.adapter.MainViewPagerAdapter
-import com.example.teacherkotlinproject.ui.pet.PetFragment
-import com.example.teacherkotlinproject.ui.profile.ProfileFragment
+import com.example.teacherkotlinproject.ui.main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view_pager
 
 class MainActivity : AppCompatActivity() {
 
-    //подумать как можно убрать CatFragment и DogFragment
-    //Вместо этих фрагментов использовать PetListFragment
-
-    lateinit var adapter: MainViewPagerAdapter
+    //Сделать нажатие на элемент и переход на следующее активити
+    lateinit var adapter: MainAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupBottomNavigation()
-        setupViewPager()
+        setupAdapter()
     }
 
-    private fun setupViewPager() {
-        adapter = MainViewPagerAdapter(this)
-        adapter.addFragment(PetFragment())
-        adapter.addFragment(ProfileFragment())
-        adapter.addFragment(FavoritesPetsFragment())
-        view_pager.offscreenPageLimit = 3
-        view_pager.adapter = adapter
-        view_pager.isEnabled = false
-        view_pager.isUserInputEnabled = false
+    private fun setupAdapter() {
+        adapter = MainAdapter()
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = adapter
     }
 
-    private fun setupBottomNavigation() {
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.pets -> view_pager.setCurrentItem(0, false)
-                R.id.profile -> view_pager.setCurrentItem(1, false)
-                R.id.favorite -> view_pager.setCurrentItem(2, false)
-            }
-            true
-        }
-    }
 }

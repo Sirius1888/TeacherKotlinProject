@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainAdapter.ClickListener {
 
-    //Сделать нажатие на элемент и переход на следующее активити
+    //Вместо вызова DetailNameActivity сделать вызов DetailNameFragment
     lateinit var adapter: MainAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

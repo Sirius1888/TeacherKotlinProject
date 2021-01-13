@@ -5,16 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teacherkotlinproject.R
+import com.example.teacherkotlinproject.model.Contact
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter(private val listener: ClickListener) : RecyclerView.Adapter<MainViewHolder>() {
 
-    private var items = mutableListOf<String>().apply {
-        add("John")
-        add("Tom")
-        add("Andry")
-        add("Sara")
-    }
+    private var items = mutableListOf<Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main, null, false))
@@ -27,11 +23,25 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
+        }
+    }
+
+    fun addItems(items: MutableList<Contact>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
+
+    interface ClickListener {
+        fun onItemClick(item: Contact)
     }
 }
 
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(item: String) {
-        itemView.name_tv.text = item
+    fun bind(item: Contact) {
+        itemView.name_tv.text = item.name
+        itemView.phone_number_tv.text = item.phoneNumber
+        itemView.age_tv.text = "Age: ${item.age}"
     }
 }

@@ -13,7 +13,9 @@ class MainAdapter(private val listener: ClickListener) : RecyclerView.Adapter<Ma
     private var items = mutableListOf<Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        return MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main, null, false))
+        return MainViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_main, null, false)
+        )
     }
 
     override fun getItemCount(): Int {

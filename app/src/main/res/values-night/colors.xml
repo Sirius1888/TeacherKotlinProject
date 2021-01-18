@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A39D9D</color>
+    <color name="colorPrimaryDark">#C2185B</color>
+    <color name="colorAccent">#1976D2</color>
+    <color name="colorText">#393939</color>
+    <color name="black_bgr">#000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#474747</color>
+
+
+    <color name="colorHeaderText">#191919</color>
+    <color name="colorSubheaderText">#6C6C6C</color>
+    <color name="swipe_view_bgr">#D32F2F</color>
+
+    <color name="positive">#D32F2F</color>
+    <color name="negative">#1976D2</color>
+</resources>

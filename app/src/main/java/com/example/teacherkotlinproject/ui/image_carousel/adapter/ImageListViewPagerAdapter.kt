@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui.image.adapter
+package com.example.teacherkotlinproject.ui.image_carousel.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -9,7 +9,7 @@ class ImageListViewPagerAdapter(fragmentManager: FragmentManager) : FragmentStat
 
     private val fragments = mutableListOf<Fragment>()
 
-    fun addFragments(fragment: Fragment) {
+    fun addFragment(fragment: Fragment) {
         fragments.add(fragment)
     }
 

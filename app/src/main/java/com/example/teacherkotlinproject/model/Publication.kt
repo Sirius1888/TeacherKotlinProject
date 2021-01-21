@@ -4,7 +4,8 @@ data class Publication(
     var name: String,
     var phoneNumber: String,
     var age: Int,
-    var image: MutableList<String>
+    var image: MutableList<String>,
+    var isFavorite: Boolean = false
 )
 
 val imagesArray = mutableListOf<String>().apply {

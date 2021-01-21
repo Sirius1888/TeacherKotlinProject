@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
 import kotlinx.android.synthetic.main.item_main.view.*
@@ -28,8 +27,14 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item, activity)
-        holder.itemView.setOnClickListener {
-            listener.onItemClick(item)
+        holder.itemView.favorite_btn.setOnClickListener {
+            listener.onFavoriteClick(item, position)
+        }
+        holder.itemView.comment_btn.setOnClickListener {
+            listener.onCommentClick(item)
+        }
+        holder.itemView.direct_btn.setOnClickListener {
+            listener.onDirectClick(item)
         }
     }
 
@@ -38,24 +43,36 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
         notifyDataSetChanged()
     }
 
+    fun updateItem(position: Int) {
+        notifyItemChanged(position)
+    }
+
     interface ClickListener {
-        fun onItemClick(item: Publication)
+        fun onFavoriteClick(item: Publication, position: Int)
+        fun onCommentClick(item: Publication)
+        fun onDirectClick(item: Publication)
     }
 }
 
 class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val recyclerView: RecyclerView = itemView.findViewById(R.id.images_rv)
-
     fun bind(item: Publication, activity: Activity) {
         itemView.name_tv.text = item.name
+        itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
         setupRecyclerView(item.image, activity)
+    }
+
+    private fun getFavoriteIcon(state: Boolean): Int {
+        return if (state) R.drawable.ic_favorite
+               else R.drawable.ic_unfavorite
     }
 
     private fun setupRecyclerView(items: MutableList<String>, activity: Activity) {
         val adapter = ImagePublicationAdapter()
-        itemView.images_rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = adapter
+        itemView.images_rv.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        itemView.images_rv.adapter = adapter
         adapter.addItems(items)
+//        val snapHelper = LinearSnapHelper()
+//        snapHelper.attachToRecyclerView(recyclerView)
     }
 }

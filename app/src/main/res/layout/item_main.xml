@@ -33,10 +33,40 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/images_rv"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_civ"
-        android:layout_marginTop="@dimen/margin_16_dp"/>
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:minHeight="200dp"
+        android:maxHeight="250dp"/>
+
+    <ImageView
+        android:id="@+id/favorite_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_unfavorite"
+        app:layout_constraintTop_toBottomOf="@+id/images_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:layout_marginStart="@dimen/margin_8_dp"/>
+
+    <ImageButton
+        android:id="@+id/comment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/favorite_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
+        android:background="@drawable/ic_comment"
+        android:layout_marginStart="@dimen/margin_8_dp"/>
+
+    <ImageButton
+        android:id="@+id/direct_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/comment_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
+        android:background="@drawable/ic_direct"
+        android:layout_marginStart="@dimen/margin_8_dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

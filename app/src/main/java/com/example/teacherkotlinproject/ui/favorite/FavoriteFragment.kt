@@ -22,7 +22,6 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
         return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
@@ -32,17 +31,24 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
         adapter = PublicationAdapter(this, requireActivity())
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
-        adapter.addItems(getFavoritesPublications())
 //        val snapHelper = LinearSnapHelper()
 //        snapHelper.attachToRecyclerView(rv)
     }
 
-    fun getFavoritesPublications(): MutableList<Publication> {
+    override fun onResume() {
+        super.onResume()
+        adapter.addItems(getFavoritesPublications())
+    }
+
+    private fun getFavoritesPublications(): MutableList<Publication> {
         return publicationsArray.filter { it.isFavorite } as MutableList<Publication>
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
-        TODO("Not yet implemented")
+        publicationsArray.forEach {
+            if (it == item) it.isFavorite = !it.isFavorite
+        }
+        adapter.removeItem(position)
     }
 
     override fun onCommentClick(item: Publication) {

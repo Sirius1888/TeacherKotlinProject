@@ -30,16 +30,6 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(ProfileFragment())
         view_pager.adapter = adapter
         view_pager.isUserInputEnabled = false;
-
-//        val intent = Intent(this, MainActivity::class.java)
-//        intent.putExtra("name", "It academy")
-        //startActivity(intent)
-
-        supportFragmentManager
-            .beginTransaction().add(R.id.container, ProfileFragment())
-            .addToBackStack("asd")
-            .commit()
-
     }
 
     private fun setupBottomNavigationView() {

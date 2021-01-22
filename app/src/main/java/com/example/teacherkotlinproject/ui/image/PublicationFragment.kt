@@ -39,6 +39,10 @@ class PublicationFragment : Fragment(),
         adapter = PublicationAdapter(this, requireActivity())
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
         adapter.addItems(publicationsArray)
     }
 
@@ -46,7 +50,6 @@ class PublicationFragment : Fragment(),
         publicationsArray.forEach {
             if (it == item) it.isFavorite = !it.isFavorite
         }
-        adapter.updateItem(position)
     }
 
     override fun onCommentClick(item: Publication) {

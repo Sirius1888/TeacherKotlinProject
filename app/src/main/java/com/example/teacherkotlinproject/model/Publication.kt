@@ -1,5 +1,7 @@
 package com.example.teacherkotlinproject.model
 
+import java.io.Serializable
+
 data class Publication(
     var id: Int,
     var icon: String,
@@ -9,7 +11,7 @@ data class Publication(
     var image: MutableList<String>,
     val randomImage: String,
     var isFavorite: Boolean = false
-)
+): Serializable
 
 val imagesArray = mutableListOf<String>().apply {
     add("https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png")

@@ -1,11 +1,10 @@
 package com.example.teacherkotlinproject.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.ui.favorite.FavoriteFragment
-import com.example.teacherkotlinproject.ui.image.PublicationFragment
+import com.example.teacherkotlinproject.ui.publication.PublicationFragment
 import com.example.teacherkotlinproject.ui.main.adapter.MainViewPagerAdapter
 import com.example.teacherkotlinproject.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*

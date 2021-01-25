@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.ui.image.adapter
+package com.example.teacherkotlinproject.ui.publication.adapter
 
 import android.view.LayoutInflater
 import android.view.View

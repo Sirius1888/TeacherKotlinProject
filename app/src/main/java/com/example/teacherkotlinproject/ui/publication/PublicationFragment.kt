@@ -1,20 +1,15 @@
-package com.example.teacherkotlinproject.ui.image
+package com.example.teacherkotlinproject.ui.publication
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.helper.showToast
 import com.example.teacherkotlinproject.model.Publication
 import com.example.teacherkotlinproject.model.publicationsArray
-import com.example.teacherkotlinproject.ui.image.adapter.PublicationAdapter
+import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_image.*
 
 
@@ -48,22 +43,23 @@ class PublicationFragment : Fragment(),
 
     override fun onFavoriteClick(item: Publication, position: Int) {
         publicationsArray.forEach {
-            if (it == item) it.isFavorite = !it.isFavorite
+            if (it == item) {
+                it.isFavorite = !it.isFavorite
+            }
         }
     }
 
     override fun onCommentClick(item: Publication) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onDirectClick(item: Publication) {
-        TODO("Not yet implemented")
+
     }
 
 //    override fun onItemClick(item: Publication) {
 //
 //    }
-
 
 //    var i = 0
 //    //Сработает хотя бы 1 раз

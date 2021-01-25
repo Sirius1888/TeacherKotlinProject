@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
 import com.example.teacherkotlinproject.model.publicationsArray
-import com.example.teacherkotlinproject.ui.image.adapter.PublicationAdapter
+import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {

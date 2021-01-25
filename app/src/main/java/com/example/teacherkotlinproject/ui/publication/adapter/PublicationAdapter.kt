@@ -1,10 +1,11 @@
-package com.example.teacherkotlinproject.ui.image.adapter
+package com.example.teacherkotlinproject.ui.publication.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
@@ -66,19 +67,22 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     fun bind(item: Publication, activity: Activity) {
         Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
         itemView.name_tv.text = item.name
+        //отображаем количество лайков в TextView
         itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
         setupRecyclerView(item.image, activity)
     }
 
     private fun setupRecyclerView(items: MutableList<String>, activity: Activity) {
         val adapter = ImagePublicationAdapter()
-        itemView.images_rv.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        itemView.images_rv.adapter = adapter
-
-//        val snapHelper = LinearSnapHelper()
-//        snapHelper.attachToRecyclerView(recyclerView)
+        val snapHelper = PagerSnapHelper()
+        itemView.images_rv.apply {
+            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+            this.adapter = adapter
+            this.onFlingListener = null
+            snapHelper.attachToRecyclerView(this)
+            itemView.rv_pi.attachToRecyclerView(this)
+        }
         adapter.addItems(items)
-
     }
 }
 

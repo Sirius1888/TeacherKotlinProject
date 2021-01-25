@@ -8,9 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
 import kotlinx.android.synthetic.main.item_profile.view.*
-import kotlin.random.Random
 
-class ProfileAdapter: RecyclerView.Adapter<ProfileViewHolder>() {
+class ProfileAdapter(val listener: ClickListener): RecyclerView.Adapter<ProfileViewHolder>() {
 
     private var items = mutableListOf<Publication>()
 
@@ -25,11 +24,18 @@ class ProfileAdapter: RecyclerView.Adapter<ProfileViewHolder>() {
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item.randomImage)
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
+        }
     }
 
     fun addItems(items: MutableList<Publication>) {
         this.items = items
         notifyDataSetChanged()
+    }
+
+    interface ClickListener {
+        fun onItemClick(item: Publication)
     }
 }
 

@@ -11,11 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
 import com.example.teacherkotlinproject.model.publicationsArray
+import com.example.teacherkotlinproject.ui.detail_publication.DetailPublicationFragment
 import com.example.teacherkotlinproject.ui.profile.adapter.ProfileAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), ProfileAdapter.ClickListener {
 
     private lateinit var adapter: ProfileAdapter
     private val COUNT_OF_GRID = 3
@@ -30,7 +31,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = ProfileAdapter()
+        adapter = ProfileAdapter(this)
         rv.layoutManager = GridLayoutManager(requireContext(), COUNT_OF_GRID)
         rv.adapter = adapter
         adapter.addItems(userPublications())
@@ -44,5 +45,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun userPublications(): MutableList<Publication> = publicationsArray.filter { it.id == 7 } as MutableList<Publication>
+
+    // из активити supportFragmentManager
+    // из фрагмента childFragmentManager
+
+    override fun onItemClick(item: Publication) {
+        val fragment = DetailPublicationFragment()
+        val bundle = Bundle()
+        bundle.putSerializable("publication", item)
+        fragment.arguments = bundle
+        activity?.supportFragmentManager?.beginTransaction()?.add(R.id.main, fragment)?.addToBackStack(fragment.tag)?.commit()
+    }
 
 }

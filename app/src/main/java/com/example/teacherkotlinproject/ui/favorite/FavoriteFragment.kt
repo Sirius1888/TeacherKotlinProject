@@ -28,7 +28,7 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
     }
 
     private fun setupRecyclerView() {
-        adapter = PublicationAdapter(this, requireActivity())
+        adapter = PublicationAdapter(this)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
 //        val snapHelper = LinearSnapHelper()

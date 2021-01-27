@@ -1,6 +1,5 @@
 package com.example.teacherkotlinproject.ui.publication.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class PublicationAdapter(private val listener: ClickListener, private val activity: Activity) : RecyclerView.Adapter<PublicationViewHolder>() {
+class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Adapter<PublicationViewHolder>() {
 
     private var items = mutableListOf<Publication>()
 
@@ -28,7 +27,7 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
 
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
-        holder.bind(item, activity)
+        holder.bind(item)
         holder.itemView.favorite_btn.setOnClickListener {
             listener.onFavoriteClick(item, position)
             holder.itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
@@ -64,19 +63,21 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
 
 class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(item: Publication, activity: Activity) {
+    fun bind(item: Publication) {
         Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
         itemView.name_tv.text = item.name
-        //отображаем количество лайков в TextView
+        itemView.count_of_favorite_tv.text = "${item.countOfFavorite}"
+        if (item.countOfFavorite == 0) itemView.count_of_favorite_tv.visibility = View.GONE
+        else itemView.count_of_favorite_tv.visibility = View.VISIBLE
         itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
-        setupRecyclerView(item.image, activity)
+        setupRecyclerView(item.image)
     }
 
-    private fun setupRecyclerView(items: MutableList<String>, activity: Activity) {
+    private fun setupRecyclerView(items: MutableList<String>) {
         val adapter = ImagePublicationAdapter()
         val snapHelper = PagerSnapHelper()
         itemView.images_rv.apply {
-            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
             this.adapter = adapter
             this.onFlingListener = null
             snapHelper.attachToRecyclerView(this)

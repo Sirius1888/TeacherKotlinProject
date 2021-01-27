@@ -31,7 +31,7 @@ class PublicationFragment : Fragment(),
     }
 
     private fun setupRecyclerView() {
-        adapter = PublicationAdapter(this, requireActivity())
+        adapter = PublicationAdapter(this)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
     }
@@ -45,8 +45,14 @@ class PublicationFragment : Fragment(),
         publicationsArray.forEach {
             if (it == item) {
                 it.isFavorite = !it.isFavorite
+                if (it.isFavorite) it.countOfFavorite += 1
+                else it.countOfFavorite -= 1
             }
+            adapter.updateItem(position)
         }
+
+//        it.countOfFavorite -= 1
+//        it.countOfFavorite = it.countOfFavorite - 1
     }
 
     override fun onCommentClick(item: Publication) {

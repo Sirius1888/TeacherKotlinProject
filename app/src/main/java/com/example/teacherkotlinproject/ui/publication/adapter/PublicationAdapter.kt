@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
+import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Adapter<PublicationViewHolder>() {
@@ -70,21 +71,21 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         if (item.countOfFavorite == 0) itemView.count_of_favorite_tv.visibility = View.GONE
         else itemView.count_of_favorite_tv.visibility = View.VISIBLE
         itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
-        setupRecyclerView(item.image)
+        setupImagesRecyclerView(item.image, itemView.images_rv, itemView.rv_pi)
     }
+}
 
-    private fun setupRecyclerView(items: MutableList<String>) {
-        val adapter = ImagePublicationAdapter()
-        val snapHelper = PagerSnapHelper()
-        itemView.images_rv.apply {
-            layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-            this.adapter = adapter
-            this.onFlingListener = null
-            snapHelper.attachToRecyclerView(this)
-            itemView.rv_pi.attachToRecyclerView(this)
-        }
-        adapter.addItems(items)
+fun setupImagesRecyclerView(items: MutableList<String>, recyclerView: RecyclerView, pagerIndicator: IndefinitePagerIndicator) {
+    val adapter = ImagePublicationAdapter()
+    val snapHelper = PagerSnapHelper()
+    recyclerView.apply {
+        layoutManager = LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
+        this.adapter = adapter
+        this.onFlingListener = null
+        snapHelper.attachToRecyclerView(this)
+        pagerIndicator.attachToRecyclerView(this)
     }
+    adapter.addItems(items)
 }
 
 private fun getFavoriteIcon(state: Boolean): Int {

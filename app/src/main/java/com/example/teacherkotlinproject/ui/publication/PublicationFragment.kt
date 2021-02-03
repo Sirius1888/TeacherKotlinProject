@@ -31,6 +31,12 @@ class PublicationFragment : Fragment(),
     }
 
     private fun setupRecyclerView() {
+//        var a: Int
+//        public const val MIN_VALUE: Int = -2147483648
+//        public const val MAX_VALUE: Int = 2147483647
+        var b: Long
+//        public const val MIN_VALUE: Long = -9223372036854775807L - 1L
+//        public const val MAX_VALUE: Long = 9223372036854775807L
         adapter = PublicationAdapter(this)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter

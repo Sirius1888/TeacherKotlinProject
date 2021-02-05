@@ -7,16 +7,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
+import com.example.teacherkotlinproject.helper.showToast
 import com.example.teacherkotlinproject.model.Publication
-import com.example.teacherkotlinproject.model.publicationsArray
+import com.example.teacherkotlinproject.ui.main.MainRepository
 import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_image.*
 
+interface RequestResult {
+    fun onFailure(t: Throwable)
+    fun onSuccess(result: MutableList<Publication>)
+}
 
 class PublicationFragment : Fragment(),
-    PublicationAdapter.ClickListener {
+    PublicationAdapter.ClickListener, RequestResult {
 
     lateinit var adapter: PublicationAdapter
+
+    private var publicationsArray: MutableList<Publication> = mutableListOf()
+    private lateinit var repository: MainRepository
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,12 +39,6 @@ class PublicationFragment : Fragment(),
     }
 
     private fun setupRecyclerView() {
-//        var a: Int
-//        public const val MIN_VALUE: Int = -2147483648
-//        public const val MAX_VALUE: Int = 2147483647
-        var b: Long
-//        public const val MIN_VALUE: Long = -9223372036854775807L - 1L
-//        public const val MAX_VALUE: Long = 9223372036854775807L
         adapter = PublicationAdapter(this)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
@@ -44,7 +46,16 @@ class PublicationFragment : Fragment(),
 
     override fun onResume() {
         super.onResume()
-        adapter.addItems(publicationsArray)
+        repository = MainRepository(this)
+        repository.fetchPublications()
+    }
+
+    override fun onFailure(t: Throwable) {
+        showToast(requireContext(), t.message.toString())
+    }
+
+    override fun onSuccess(result: MutableList<Publication>) {
+        adapter.addItems(result)
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
@@ -68,6 +79,8 @@ class PublicationFragment : Fragment(),
     override fun onDirectClick(item: Publication) {
 
     }
+
+
 
 //    override fun onItemClick(item: Publication) {
 //

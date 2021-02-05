@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.model.Publication
-import com.example.teacherkotlinproject.model.publicationsArray
 import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
+
+//Сделать отображение данные как в PublicationFragment()
 class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
 
     lateinit var adapter: PublicationAdapter
@@ -37,18 +38,18 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter.addItems(getFavoritesPublications())
+//        adapter.addItems(getFavoritesPublications())
     }
 
-    private fun getFavoritesPublications(): MutableList<Publication> {
-        return publicationsArray.filter { it.isFavorite } as MutableList<Publication>
-    }
+//    private fun getFavoritesPublications(): MutableList<Publication> {
+//        return publicationsArray.filter { it.isFavorite } as MutableList<Publication>
+//    }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
-        publicationsArray.forEach {
-            if (it == item) it.isFavorite = !it.isFavorite
-        }
-        adapter.removeItem(position)
+//        publicationsArray.forEach {
+//            if (it == item) it.isFavorite = !it.isFavorite
+//        }
+//        adapter.removeItem(position)
     }
 
     override fun onCommentClick(item: Publication) {

@@ -21,12 +21,13 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: MainViewPagerAdapter
+    private lateinit var repository: MainRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViewPager()
         setupBottomNavigationView()
-        request()
+//        showToast(this, repository.fetchTestData(this).toString())
     }
 
     private fun setupViewPager() {
@@ -52,20 +53,6 @@ class MainActivity : AppCompatActivity() {
     private fun changeCurrentItem(position: Int) {
         view_pager.setCurrentItem(position, false)
     }
-
-    var data: MutableList<Meet>? = mutableListOf<Meet>()
-    fun request() = RetrofitClient().simpleApi.getMeet().enqueue(object : Callback<MutableList<Meet>> {
-        override fun onFailure(call: Call<MutableList<Meet>>, t: Throwable) {
-            showToast(this@MainActivity, t.message.toString())
-        }
-
-        override fun onResponse(call: Call<MutableList<Meet>>, response: Response<MutableList<Meet>>) {
-            if (response.code() == 200) {
-                showToast(this@MainActivity, response.body().toString())
-//                data = response.body()
-            }
-        }
-    })
 }
 
 

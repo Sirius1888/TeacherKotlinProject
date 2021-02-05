@@ -27,6 +27,6 @@ class DetailPublicationFragment : Fragment() {
         Glide.with(requireContext()).load(data.icon).into(icon_civ)
         name_tv.text = data.name
         count_of_favorite_tv.text = "${data.countOfFavorite}"
-        setupImagesRecyclerView(data.image, images_rv, rv_pi)
+        setupImagesRecyclerView(data.images, images_rv, rv_pi)
     }
 }

@@ -66,7 +66,7 @@ class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Ada
 class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(item: Publication) {
-        Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
+        Glide.with(itemView.context).load(item.icon).placeholder(R.drawable.ic_people).into(itemView.icon_civ)
         itemView.name_tv.text = item.name
         itemView.count_of_favorite_tv.text = "${item.countOfFavorite}"
         if (item.countOfFavorite == 0) itemView.count_of_favorite_tv.visibility = View.GONE

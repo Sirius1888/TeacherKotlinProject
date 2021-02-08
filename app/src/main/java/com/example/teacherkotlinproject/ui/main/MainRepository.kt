@@ -1,8 +1,5 @@
 package com.example.teacherkotlinproject.ui.main
 
-import android.content.Context
-import com.example.teacherkotlinproject.helper.showToast
-import com.example.teacherkotlinproject.model.Meet
 import com.example.teacherkotlinproject.model.Publication
 import com.example.teacherkotlinproject.network.RetrofitClient
 import com.example.teacherkotlinproject.ui.publication.RequestResult
@@ -31,4 +28,25 @@ class MainRepository(private val callback: RequestResult) {
         })
     }
 
+    fun fetchProfile() {
+        api.fetchProfile().enqueue(object: Callback<Publication> {
+            override fun onFailure(call: Call<Publication>, t: Throwable) {
+                return callback.onFailure(t)
+            }
+
+            override fun onResponse(call: Call<Publication>, response: Response<Publication>) {
+                return if (response.body() != null) callback.onSuccess(response.body())
+                else callback.onFailure(Throwable("error"))
+            }
+        })
+    }
+    //CRUD - CREATE, READ, UPDATE, DELETE
+    //POST GET PUT DELETE
+
+    //Процесс, поток
+    //Ассинхронный, синхронный
+    //coroutine - LiveData/Flow, rxJava - Single/Observer
+
+    //Способы передачи данных между сервером и клиентом
+    //json, XML, YAML
 }

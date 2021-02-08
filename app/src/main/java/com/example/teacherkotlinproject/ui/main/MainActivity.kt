@@ -20,6 +20,8 @@ import retrofit2.Response
 //Если мы открываем фрагмент из фрагмента, то используем - childFragmentManager (Данные передаем через Bundle)
 class MainActivity : AppCompatActivity() {
 
+    //дз 46 для JSON Публикаций добавить комментарии.
+
     lateinit var adapter: MainViewPagerAdapter
     private lateinit var repository: MainRepository
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupViewPager()
         setupBottomNavigationView()
-//        showToast(this, repository.fetchTestData(this).toString())
     }
 
     private fun setupViewPager() {
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(FavoriteFragment())
         adapter.addFragment(ProfileFragment())
         view_pager.adapter = adapter
-        view_pager.isUserInputEnabled = false;
+        view_pager.isUserInputEnabled = false
     }
 
     private fun setupBottomNavigationView() {
@@ -54,14 +55,3 @@ class MainActivity : AppCompatActivity() {
         view_pager.setCurrentItem(position, false)
     }
 }
-
-
-
-
-
-
-
-
-
-
-

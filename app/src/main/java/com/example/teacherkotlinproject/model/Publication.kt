@@ -1,10 +1,11 @@
 package com.example.teacherkotlinproject.model
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Publication(
     var id: Int,
-    var icon: String,
+    @SerializedName("image") var icon: String,
     var name: String,
     var phoneNumber: String,
     var age: Int,

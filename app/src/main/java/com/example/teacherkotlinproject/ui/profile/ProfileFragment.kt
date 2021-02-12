@@ -65,6 +65,6 @@ class ProfileFragment : Fragment(), ProfileAdapter.ClickListener, RequestResult 
         Glide.with(requireContext()).load(user.icon).into(image_civ)
         name_tv.text = user.name
         description_tv.text = user.phoneNumber
-        adapter.addItems(user.images)
+        user.images?.let { adapter.addItems(it) }
     }
 }

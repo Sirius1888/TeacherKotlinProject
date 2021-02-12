@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
+import com.example.teacherkotlinproject.model.Comment
 import com.example.teacherkotlinproject.model.Images
 import com.example.teacherkotlinproject.model.Publication
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
@@ -44,7 +45,7 @@ class PublicationAdapter(private val listener: ClickListener) : RecyclerView.Ada
 
     fun addItems(items: MutableList<Publication>) {
         this.items = items
-        notifyDataSetChanged() // - вы обновляете весь адаптер
+        notifyDataSetChanged()
     }
 
     fun updateItem(position: Int) {
@@ -73,10 +74,25 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         else itemView.count_of_favorite_tv.visibility = View.VISIBLE
         itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
         setupImagesRecyclerView(item.images, itemView.images_rv, itemView.rv_pi)
+        setupCommentsRecyclerView(item.comments, itemView.comments_rv)
+    }
+
+    //protected - метод с параметром доступа виден для других классов только внутри родительской папки
+    //private - метод с параметром доступа виден для других классов только внутри класс
+    //public - метод с параметром доступа виден всем
+    //internal - метод с параметром доступа виден для других только для родительского модуля
+
+    private fun setupCommentsRecyclerView(items: MutableList<Comment>?, recyclerView: RecyclerView) {
+        val adapter = CommentsPublicationAdapter()
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(recyclerView.context)
+            this.adapter = adapter
+        }
+        items?.let { adapter.addItems(it) }
     }
 }
 
-fun setupImagesRecyclerView(items: MutableList<Images>, recyclerView: RecyclerView, pagerIndicator: IndefinitePagerIndicator) {
+fun setupImagesRecyclerView(items: MutableList<Images>?, recyclerView: RecyclerView, pagerIndicator: IndefinitePagerIndicator) {
     val adapter = ImagePublicationAdapter()
     val snapHelper = PagerSnapHelper()
     recyclerView.apply {
@@ -86,7 +102,7 @@ fun setupImagesRecyclerView(items: MutableList<Images>, recyclerView: RecyclerVi
         snapHelper.attachToRecyclerView(this)
         pagerIndicator.attachToRecyclerView(this)
     }
-    adapter.addItems(items)
+    items?.let { adapter.addItems(it) }
 }
 
 private fun getFavoriteIcon(state: Boolean): Int {

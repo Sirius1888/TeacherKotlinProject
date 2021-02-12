@@ -17,7 +17,7 @@ interface RequestResult {
     fun onFailure(t: Throwable)
     fun <T>onSuccess(result: T)
 }
-
+//MVC - ModelViewController
 class PublicationFragment : Fragment(),
     PublicationAdapter.ClickListener, RequestResult {
 

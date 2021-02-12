@@ -1,10 +1,8 @@
 package com.example.teacherkotlinproject.model
 
-import com.google.gson.annotations.SerializedName
-
-data class Meet(
-    var title: String? = null,
-    var url: String? = null
+data class Comment(
+    var name: String? = null,
+    var message: String? = null
 )
 
 // GET - Получение данных,

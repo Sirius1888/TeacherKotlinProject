@@ -4,14 +4,15 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Publication(
-    var id: Int,
-    @SerializedName("image") var icon: String,
-    var name: String,
-    var phoneNumber: String,
-    var age: Int,
-    var countOfFavorite: Int,
-    var images: MutableList<Images>,
-    val randomImage: String,
+    var id: Int? = null,
+    @SerializedName("image") var icon: String? = null,
+    var name: String? = null,
+    var phoneNumber: String? = null,
+    var age: Int? = null,
+    var countOfFavorite: Int = 0,
+    var images: MutableList<Images>? = null,
+    val randomImage: String? = null,
+    val comments: MutableList<Comment>? = null,
     var isFavorite: Boolean = false
 ): Serializable
 

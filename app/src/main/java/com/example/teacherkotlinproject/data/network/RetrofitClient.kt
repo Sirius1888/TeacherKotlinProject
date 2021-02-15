@@ -1,4 +1,4 @@
-package com.example.teacherkotlinproject.network
+package com.example.teacherkotlinproject.data.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +16,7 @@ class RetrofitClient {
         .addInterceptor(httpLoggingInterceptor)
         .build()
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://gist.githubusercontent.com/Sirius1888/6551973ba9c39ba44adadfef166e7cb5/")
+        .baseUrl("https://gist.github.com/Sirius1888/6551973ba9c39ba44adadfef166e7cb5/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

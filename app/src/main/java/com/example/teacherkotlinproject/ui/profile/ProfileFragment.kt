@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.helper.showToast
-import com.example.teacherkotlinproject.model.Images
-import com.example.teacherkotlinproject.model.Publication
+import com.example.teacherkotlinproject.data.model.Images
+import com.example.teacherkotlinproject.data.model.Publication
 import com.example.teacherkotlinproject.ui.detail_publication.DetailPublicationFragment
 import com.example.teacherkotlinproject.ui.main.MainRepository
 import com.example.teacherkotlinproject.ui.profile.adapter.ProfileAdapter

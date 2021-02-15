@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.helper.showToast
-import com.example.teacherkotlinproject.model.Publication
+import com.example.teacherkotlinproject.data.model.Publication
 import com.example.teacherkotlinproject.ui.main.MainRepository
 import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_image.*

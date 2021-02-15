@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 //Если мы открываем активити, то используем - Intent (Данные передаем через Intent)
 //Если мы открываем фрагмент из активити, то используем - supportFragmentManager (Данные передаем через Bundle)
 //Если мы открываем фрагмент из фрагмента, то используем - childFragmentManager (Данные передаем через Bundle)
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: MainViewPagerAdapter

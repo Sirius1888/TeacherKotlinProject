@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.model.Comment
-import com.example.teacherkotlinproject.model.Images
-import com.example.teacherkotlinproject.model.Publication
+import com.example.teacherkotlinproject.data.model.Comment
+import com.example.teacherkotlinproject.data.model.Images
+import com.example.teacherkotlinproject.data.model.Publication
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.item_main.view.*
 

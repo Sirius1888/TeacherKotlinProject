@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.model.Comment
-import com.example.teacherkotlinproject.model.Images
+import com.example.teacherkotlinproject.data.model.Comment
 import kotlinx.android.synthetic.main.item_comments.view.*
-import kotlinx.android.synthetic.main.item_image.view.*
 
 class CommentsPublicationAdapter : RecyclerView.Adapter<CommentsPublicationViewHolder>() {
 
@@ -28,14 +25,12 @@ class CommentsPublicationAdapter : RecyclerView.Adapter<CommentsPublicationViewH
     override fun onBindViewHolder(holder: CommentsPublicationViewHolder, position: Int) {
         val item = urls[position]
         holder.bind(item)
-
     }
 
     fun addItems(items: MutableList<Comment>) {
         urls = items
         notifyDataSetChanged()
     }
-
 }
 
 class CommentsPublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

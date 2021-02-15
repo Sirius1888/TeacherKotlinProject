@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.teacherkotlinproject.R
-import com.example.teacherkotlinproject.model.Images
-import com.example.teacherkotlinproject.model.Publication
+import com.example.teacherkotlinproject.data.model.Images
 import kotlinx.android.synthetic.main.item_profile.view.*
 
 class ProfileAdapter(val listener: ClickListener): RecyclerView.Adapter<ProfileViewHolder>() {

@@ -8,14 +8,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teacherkotlinproject.R
 import com.example.teacherkotlinproject.data.model.Publication
+import com.example.teacherkotlinproject.ui.main.MainRepository
+import com.example.teacherkotlinproject.ui.publication.RequestResult
 import com.example.teacherkotlinproject.ui.publication.adapter.PublicationAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
-
-//Сделать отображение данные как в PublicationFragment()
-class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
+class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener, RequestResult {
 
     lateinit var adapter: PublicationAdapter
+    private lateinit var repository: MainRepository
+    private var publicationsArray = mutableListOf<Publication>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,36 +34,37 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
         adapter = PublicationAdapter(this)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
-//        val snapHelper = LinearSnapHelper()
-//        snapHelper.attachToRecyclerView(rv)
     }
 
     override fun onResume() {
         super.onResume()
-//        adapter.addItems(getFavoritesPublications())
+        repository = MainRepository(this)
+        repository.fetchFavoritePublications()
     }
 
-//    private fun getFavoritesPublications(): MutableList<Publication> {
-//        return publicationsArray.filter { it.isFavorite } as MutableList<Publication>
-//    }
-
     override fun onFavoriteClick(item: Publication, position: Int) {
-//        publicationsArray.forEach {
-//            if (it == item) it.isFavorite = !it.isFavorite
-//        }
-//        adapter.removeItem(position)
+        for (it in publicationsArray) {
+            if (it == item) {
+                it.isFavorite = !it.isFavorite
+                if (it.isFavorite) it.countOfFavorite += 1
+                else it.countOfFavorite -= 1
+                repository.updateChangeFavoriteState(it)
+                adapter.removeItem(position)
+            }
+        }
     }
 
     override fun onCommentClick(item: Publication) {
-        TODO("Not yet implemented")
     }
 
     override fun onDirectClick(item: Publication) {
-        TODO("Not yet implemented")
     }
 
-//    override fun onItemClick(item: Publication) {
-//
-//    }
+    override fun onFailure(t: Throwable) {
+    }
 
+    override fun <T> onSuccess(result: T) {
+        publicationsArray = result as MutableList<Publication>
+        adapter.addItems(publicationsArray)
+    }
 }

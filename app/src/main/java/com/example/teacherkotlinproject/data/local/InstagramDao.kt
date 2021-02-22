@@ -4,10 +4,10 @@ import androidx.room.*
 import com.example.teacherkotlinproject.data.model.Publication
 
 //CRUD - CREATE READ UPDATE DELETE
-//    @Insert - Post
-//    @Update - Put
+//    @Insert - Post - Добавление
+//    @Update - Put - Изменение
 //    @Query - Произвольный запрос
-//    @Delete - Delete
+//    @Delete - Delete - Удаление
 @Dao
 interface InstagramDao {
 
@@ -15,6 +15,11 @@ interface InstagramDao {
     fun insertPublications(data: List<Publication>?)
 
     @Query("SELECT * FROM publications")
-    fun getPublications(): List<Publication>
+    fun fetchPublications(): List<Publication>
 
+    @Query("SELECT * FROM publications WHERE isFavorite == 1")
+    fun fetchFavoritePublications(): List<Publication>
+
+    @Update
+    fun updateChangeFavoriteState(data: Publication)
 }

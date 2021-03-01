@@ -14,8 +14,9 @@ import com.example.teacherkotlinproject.data.model.Images
 import com.example.teacherkotlinproject.data.model.Publication
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.item_publication.view.*
+import kotlinx.android.synthetic.main.item_empty.view.*
 
-class PublicationAdapter(private val listener: ClickListener, private val activity: Activity) :
+class PublicationAdapter(private val listener: ClickListener) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
     private var items = mutableListOf<Publication>()
@@ -40,11 +41,12 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val type = getItemViewType(position)
         if (type == VIEW_TYPE_DATA) setupPublicationViewHolder(holder as PublicationViewHolder, position)
+        else if (type == VIEW_TYPE_EMPTY) setupEmptyViewHolder(holder as EmptyViewHolder)
     }
 
     private fun setupPublicationViewHolder(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
-        holder.bind(item, activity)
+        holder.bind(item)
         holder.itemView.favorite_btn.setOnClickListener {
             listener.onFavoriteClick(item, position)
             holder.itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
@@ -55,6 +57,10 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
         holder.itemView.direct_btn.setOnClickListener {
             listener.onDirectClick(item)
         }
+    }
+
+    private fun setupEmptyViewHolder(holder: EmptyViewHolder) {
+        holder.bind("У вас нет данных в избранном", R.drawable.ic_hourglass_empty)
     }
 
     fun addItems(items: MutableList<Publication>) {
@@ -87,7 +93,7 @@ open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class PublicationViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
-    fun bind(item: Publication, activity: Activity) {
+    fun bind(item: Publication) {
         Glide.with(itemView.context).load(item.icon).placeholder(R.drawable.ic_people)
             .into(itemView.icon_civ)
         itemView.name_tv.text = item.name
@@ -112,7 +118,12 @@ class PublicationViewHolder(itemView: View) : BaseViewHolder(itemView) {
     }
 }
 
-class EmptyViewHolder(itemView: View) : BaseViewHolder(itemView) { }
+class EmptyViewHolder(itemView: View) : BaseViewHolder(itemView) {
+    fun bind(title: String, icHourglassEmpty: Int) {
+        itemView.tv_title.text= title
+        itemView.im_empty.setImageResource(icHourglassEmpty)
+    }
+}
 
 fun setupImagesRecyclerView(items: MutableList<Images>?, recyclerView: RecyclerView, pagerIndicator: IndefinitePagerIndicator) {
     val adapter = ImagePublicationAdapter()
